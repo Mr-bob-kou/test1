@@ -14,7 +14,7 @@ st.sidebar.image(logo)
 
 st.title("Interactive Map")
 
-col1, col2 = st.columns([9, 1])
+col1, col2 = st.columns([4, 1])
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
 
