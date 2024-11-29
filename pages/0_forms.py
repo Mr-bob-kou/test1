@@ -13,7 +13,7 @@ st.sidebar.info(markdown)
 logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
-data="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
+data1="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
 st.title("Marker Cluster")
-gdf = gpd.read_file(data)
-gdf.head()
+gdf = gpd.read_file(data1)
+st.dataframe(data=data1)
