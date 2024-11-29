@@ -14,6 +14,6 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 data1="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
-st.title("Marker Cluster")
+st.title("Heritage Counts List")
 gdf = gpd.read_file(data1)
 st.dataframe(data=gdf)
