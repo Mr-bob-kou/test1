@@ -5,7 +5,7 @@ markdown = """
 A Streamlit map template
 <https://github.com/opengeos/streamlit-map-template>
 """
-
+data="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
 st.sidebar.title("About")
 st.sidebar.info(markdown)
 logo = "https://i.imgur.com/UbOXYAU.png"
@@ -29,4 +29,5 @@ with col1:
         locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
     )
     m.add_basemap(basemap)
+    m.addLayer(data)
     m.to_streamlit(height=700)
