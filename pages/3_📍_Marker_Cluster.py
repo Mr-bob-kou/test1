@@ -26,8 +26,8 @@ with st.expander("See source code"):
         m.add_geojson(regions, layer_name="US Regions")
         m.add_points_from_xy(
             heritage,
-            x="longitude",
-            y="latitude",
+            x="LONGITUDE",
+            y="LATITUDE",
             color_column="region",
             icon_names=["gear", "map", "leaf", "globe"],
             spin=True,
