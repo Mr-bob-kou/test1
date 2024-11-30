@@ -1,5 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import geopandas as gpd
 
 st.set_page_config(layout="wide")
 
@@ -14,17 +15,17 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 st.title("Marker Cluster")
-
+data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/worldheri/worldheritagesites.dbf"
+heritage=gpd.read_file(data)
 with st.expander("See source code"):
     with st.echo():
 
         m = leafmap.Map(center=[40, -100], zoom=4)
-        cities = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_cities.csv"
         regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
 
         m.add_geojson(regions, layer_name="US Regions")
         m.add_points_from_xy(
-            cities,
+            heritage,
             x="longitude",
             y="latitude",
             color_column="region",
