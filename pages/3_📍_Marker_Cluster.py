@@ -28,7 +28,7 @@ with st.expander("See source code"):
             heritage,
             x="LONGITUDE",
             y="LATITUDE",
-            color_column="region",
+            color_column="REGION",
             icon_names=["gear", "map", "leaf", "globe"],
             spin=True,
             add_legend=True,
