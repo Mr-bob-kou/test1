@@ -18,16 +18,16 @@ st.title("Marker Cluster")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 heritage=gpd.read_file(data)
 with st.expander("See source code"):
-    with st.echo():
+    heritage.dataframe(data=gdf)
 
-        m = leafmap.Map(center=[40, -100], zoom=4)
-        regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
+m = leafmap.Map(center=[40, -100], zoom=4)
+regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
 
-        m.add_geojson(regions, layer_name="US Regions")
-        m.add_points_from_xy(
-            heritage,
-            x="LONGITUDE",
-            y="LATITUDE",
+ m.add_geojson(regions, layer_name="US Regions")
+ m.add_points_from_xy(
+    heritage,
+    x="LONGITUDE",
+    y="LATITUDE",
         )
 
 m.to_streamlit(height=700)
