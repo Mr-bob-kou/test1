@@ -24,6 +24,7 @@ with st.expander("See source code"):
             heritage,
             latitude="LATITUDE",
             longitude="LONGITUDE",
+            value=1,
             name="Heat map",
             radius=20,
         )
