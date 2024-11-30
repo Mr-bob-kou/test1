@@ -14,16 +14,15 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 st.title("Heatmap")
-
+data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
+heritage=gpd.read_file(data)
 with st.expander("See source code"):
     with st.echo():
-        filepath = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_cities.csv"
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_heatmap(
-            filepath,
-            latitude="latitude",
-            longitude="longitude",
-            value="pop_max",
+            heritage,
+            latitude="LATITUDE",
+            longitude="LONGITUDE",
             name="Heat map",
             radius=20,
         )
