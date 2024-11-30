@@ -15,7 +15,7 @@ logo = "https://i.imgur.com/UbOXYAU.png"
 st.sidebar.image(logo)
 
 st.title("Marker Cluster")
-data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/worldheri/worldheritagesites.shp"
+data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 heritage=gpd.read_file(data)
 with st.expander("See source code"):
     with st.echo():
