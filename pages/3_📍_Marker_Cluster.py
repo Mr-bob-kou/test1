@@ -26,7 +26,13 @@ with col2:
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='總數統計圖':
-
+        data="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
+        m = leafmap.Map(
+            locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
+        )
+        m.add_basemap(basemap)
+        m.add_geojson(data)
+        m.to_streamlit(height=700)
     else:
         m.add_geojson(regions, layer_name="Countries")
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
