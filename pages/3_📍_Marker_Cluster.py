@@ -17,7 +17,11 @@ modes1="預設"
 def style_function(feature):
     count = feature['properties']['count']
     
-    if count > 20:
+    if count > 40:
+        color = '#003D79'
+    elif count > 30:
+        color = "#0066CC"
+    elif count > 20:
         color = '#0080FF'
     elif count > 10:
         color = '#C4E1FF'
