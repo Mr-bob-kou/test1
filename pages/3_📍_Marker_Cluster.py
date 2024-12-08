@@ -15,7 +15,7 @@ index = options.index("OpenTopoMap")
 modes=["預設","熱力圖","總數統計圖"]
 modes1="預設"
 def style_function(feature):
-    count = data2['properties']['count']
+    count = feature['properties']['count']
     
     if count > 20:
         color = 'red'
