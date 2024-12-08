@@ -51,7 +51,7 @@ with col1:
         m.add_geojson(data2,style_callback=style_function)
         m.to_streamlit(height=700)
     else:
-         m = leafmap.Map(
+        m = leafmap.Map(
             center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
         )
         m.add_geojson(regions, layer_name="Countries")
