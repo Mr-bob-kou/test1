@@ -50,7 +50,7 @@ with col1:
         m.add_basemap(basemap)
         m.add_geojson(data2,style_callback=style_function)
         m.to_streamlit(height=700)
-    else if mode=='Heatmap':
+    elif mode=='Heatmap':
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_heatmap(
         heritage,
@@ -60,7 +60,7 @@ with col1:
         name="Heat map",
         radius=20)
         m.to_streamlit(height=700)
-    else if mode=='Default':
+    elif mode=='Default':
         m = leafmap.Map(
             center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
         )
