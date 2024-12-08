@@ -45,7 +45,7 @@ with col2:
     mode=st.selectbox("Select a Mode",modes)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
-    if mode=='總數統計圖':
+    if mode=='Choropleth Map(Count by every Countries)':
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_basemap(basemap)
         m.add_geojson(data2,style_callback=style_function)
