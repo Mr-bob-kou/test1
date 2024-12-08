@@ -33,8 +33,8 @@ with col1:
         value="AREAHA",
         name="Heat map",
         radius=20)
-        m.add_basemap(basemap)
-        m.to_streamlit(height=700)
+    m.add_basemap(basemap)
+    m.to_streamlit(height=700)
     else:
      m.add_geojson(regions, layer_name="Countries")
      m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
