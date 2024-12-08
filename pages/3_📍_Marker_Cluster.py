@@ -51,9 +51,11 @@ with col1:
         m.add_geojson(data2,style_callback=style_function)
         m.to_streamlit(height=700)
     elif mode=='Heat Map':
+        data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
+        heritage2=gpd.read_file(data)
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_heatmap(
-        heritage,
+        heritage2,
         latitude="LATITUDE",
         longitude="LONGITUDE",
         value="AREAHA",
