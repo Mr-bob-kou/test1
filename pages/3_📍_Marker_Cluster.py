@@ -46,13 +46,14 @@ with col2:
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='總數統計圖':
-        m = leafmap.Map(
-            locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
-        )
+        m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_basemap(basemap)
         m.add_geojson(data2,style_callback=style_function)
         m.to_streamlit(height=700)
     else:
+         m = leafmap.Map(
+            center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
+        )
         m.add_geojson(regions, layer_name="Countries")
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
