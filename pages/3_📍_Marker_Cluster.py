@@ -28,7 +28,7 @@ def style_function(feature):
         'fillColor': color,
         'color': color,
         'weight': 2,
-        'fillOpacity': 0.5
+        'fillOpacity': 1
     }
 with st.expander("See All Heritage Data"):
     heritage=gpd.read_file(data)
