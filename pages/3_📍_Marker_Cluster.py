@@ -24,6 +24,6 @@ m = leafmap.Map(center=[40, -100], zoom=4)
 regions = "https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/world-administrative-boundaries.geojson"
 
 m.add_geojson(regions, layer_name="Countries")
-m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=heritage['NAME'])
+m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
 
 m.to_streamlit(height=700)
