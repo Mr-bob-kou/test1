@@ -25,16 +25,8 @@ with col2:
     mode=st.selectbox("Select a Mode",modes)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
-    if mode=='熱力圖':
-        m.add_heatmap(
-            heritage,
-            latitude="LATITUDE",
-            longitude="LONGITUDE",
-            value="AREAHA",
-            name="Heat map",
-            radius=20)
-        m.add_basemap(basemap)
-        m.to_streamlit(height=700)
+    if mode=='總數統計圖':
+
     else:
         m.add_geojson(regions, layer_name="Countries")
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
