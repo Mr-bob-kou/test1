@@ -34,6 +34,11 @@ def style_function(feature):
         'weight': 2,
         'fillOpacity': 1
     }
+def chromap(datum,mp):
+    m = leafmap.Map(center=[40, -100], zoom=4)
+    mp.add_basemap(basemap)
+    mp.add_geojson(datum,style_callback=style_function)
+    return mp.to_streamlit(height=700)
 with st.expander("See All Heritage Data"):
     heritage=gpd.read_file(data)
     st.dataframe(data=heritage)
@@ -46,10 +51,7 @@ with col2:
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Count by every Countries)':
-        m = leafmap.Map(center=[40, -100], zoom=4)
-        m.add_basemap(basemap)
-        m.add_geojson(data2,style_callback=style_function)
-        m.to_streamlit(height=700)
+       chromap(data2,m)
     elif mode=='Heat Map':
         data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
         heritage2=gpd.read_file(data3)
