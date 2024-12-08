@@ -18,11 +18,11 @@ def style_function(feature):
     count = feature['properties']['count']
     
     if count > 20:
-        color = 'red'
+        color = '#0080FF'
     elif count > 10:
-        color = 'orange'
+        color = '#C4E1FF'
     else:
-        color = 'green'
+        color = '#ECF5FF'
     
     return {
         'fillColor': color,
