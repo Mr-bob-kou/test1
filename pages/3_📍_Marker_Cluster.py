@@ -26,7 +26,7 @@ def style_function(feature):
     
     return {
         'fillColor': color,
-        'color': black,
+        'color':"black",
         'weight': 2,
         'fillOpacity': 1
     }
