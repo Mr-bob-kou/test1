@@ -52,7 +52,7 @@ with col1:
         m.to_streamlit(height=700)
     elif mode=='Heat Map':
         data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
-        heritage2=gpd.read_file(data)
+        heritage2=gpd.read_file(data3)
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_heatmap(
         heritage2,
