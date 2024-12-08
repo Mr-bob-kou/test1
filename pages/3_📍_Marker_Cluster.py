@@ -30,7 +30,7 @@ col1, col2 = st.columns([4, 1])
 
 with col2:
     basemap = st.selectbox("Select a basemap:", options, index)
-    mode=st.selectbox("Select a Mode",modes1,modes)
+    mode=st.selectbox("Select a Mode",modes,modes1)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     m.add_geojson(regions, layer_name="Countries")
