@@ -5,13 +5,13 @@ import geopandas as gpd
 st.set_page_config(layout="wide")
 
 
-col1, col2 = st.columns([4, 1])
 st.title("General")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 regions = "https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/world-administrative-boundaries.geojson"
 heritage=gpd.read_file(data)
 with st.expander("See All Heritage Data"):
     st.dataframe(data=heritage)
+col1, col2 = st.columns([4, 1])
 with col2:
     st.write("Blank Space")
 with col1:
