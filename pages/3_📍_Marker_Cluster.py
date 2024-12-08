@@ -12,8 +12,8 @@ data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20
 
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
-modes=["預設","熱力圖","總數統計圖"]
-modes1="預設"
+modes=["Default","Heat Map","Choropleth Map(Count by every Countries)"]
+modes1="Default"
 def style_function(feature):
     count = feature['properties']['count']
     
