@@ -26,7 +26,7 @@ def style_function(feature):
     elif count > 10:
         color = '#C4E1FF'
     elif count > 0 :
-        color = '#ECF5FF'
+        color = '#D2E9FF'
     else:
         color='#FFFFFF'
     
