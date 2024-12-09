@@ -10,6 +10,7 @@ st.title("General")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 regions = "https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/world-administrative-boundaries.geojson"
 data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
+Count=gpd.read_file(data2)
 data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
 heritage2=gpd.read_file(data3)
 
@@ -88,6 +89,6 @@ with col1:
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
-charts = alt.Chart(data2).mark_bar().encode(x='count',y='name')
+charts = alt.Chart(Count).mark_bar().encode(x="name:N",y="count:Q")
 st.altair_chart(charts)
 
