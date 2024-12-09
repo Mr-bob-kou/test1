@@ -13,6 +13,7 @@ data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20
 Count=gpd.read_file(data2)
 data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
 heritage2=gpd.read_file(data3)
+count10=Count.sort_values(by='count', ascending=False).head(10)
 
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
@@ -79,7 +80,7 @@ with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
         chromap(data2,m)
-        charts = alt.Chart(Count).mark_bar(size=20).encode(x="name:N",y="count:Q")
+        charts = alt.Chart(Count10).mark_bar(size=20).encode(x="name:N",y="count:Q")
         st.altair_chart(charts,use_container_width=True)
     elif mode=='Heat Map':
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
