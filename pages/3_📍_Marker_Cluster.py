@@ -80,7 +80,7 @@ with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
         chromap(data2,m)
-        charts = alt.Chart(Count10).mark_bar(size=20).encode(x="name:N",y="count:Q")
+        charts = alt.Chart(count10).mark_bar(size=20).encode(x="name:N",y="count:Q")
         st.altair_chart(charts,use_container_width=True)
     elif mode=='Heat Map':
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
