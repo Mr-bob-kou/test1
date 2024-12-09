@@ -9,6 +9,8 @@ st.title("General")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 regions = "https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/world-administrative-boundaries.geojson"
 data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
+data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
+heritage2=gpd.read_file(data3)
 
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
@@ -51,6 +53,15 @@ def chromap(datum,mp):
     mp.add_geojson(datum,style_callback=style_function) 
     mp.add_legend(title="Heritage Counts", legend_dict=legend_dict,draggable=False,position="bottomright")
     return mp.to_streamlit(height=700)
+def heatmap(datum,mp,lat,lon,val):
+    mp.add_heatmap(
+        datum,
+        latitude=lat,
+        longitude=lon,
+        value=val,
+        name="Heat map",
+        radius=20)
+    return mp.to_streamlit(height=700)
 
 
 with st.expander("See All Heritage Data"):
@@ -67,17 +78,7 @@ with col1:
     if mode=='Choropleth Map(Heritage Count)':
        chromap(data2,m)
     elif mode=='Heat Map':
-        data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
-        heritage2=gpd.read_file(data3)
-        m = leafmap.Map(center=[40, -100], zoom=4)
-        m.add_heatmap(
-        heritage2,
-        latitude="LATITUDE",
-        longitude="LONGITUDE",
-        value="AREAHA",
-        name="Heat map",
-        radius=20)
-        m.to_streamlit(height=700)
+       heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
     elif mode=='Default':
         m = leafmap.Map(
             center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
@@ -86,3 +87,4 @@ with col1:
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
+
