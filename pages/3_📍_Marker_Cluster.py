@@ -25,8 +25,10 @@ def style_function(feature):
         color = '#0080FF'
     elif count > 10:
         color = '#C4E1FF'
-    else:
+    elif count > 0 :
         color = '#ECF5FF'
+    else:
+        color='#FFFFF'
     
     return {
         'fillColor': color,
