@@ -12,7 +12,7 @@ data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20
 
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
-modes=["Default","Heat Map","Choropleth Map(Count by every Countries)"]
+modes=["Default","Heat Map","Choropleth Map(Heritage Count)"]
 modes1="Default"
 
 legend_dict = {
@@ -60,9 +60,11 @@ col1, col2 = st.columns([4, 1])
 with col2:
     basemap = st.selectbox("Select a basemap:", options, index)
     mode=st.selectbox("Select a Mode",modes)
+    if mode=='Choropleth Map(Heritage Count)':
+        chbox=st.checkbox("3-D Presentation")
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
-    if mode=='Choropleth Map(Count by every Countries)':
+    if mode=='Choropleth Map(Heritage Count)':
        chromap(data2,m)
     elif mode=='Heat Map':
         data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
