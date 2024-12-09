@@ -28,7 +28,7 @@ def style_function(feature):
     elif count > 0 :
         color = '#ECF5FF'
     else:
-        color='#FFFFF'
+        color='#FFFFFF'
     
     return {
         'fillColor': color,
