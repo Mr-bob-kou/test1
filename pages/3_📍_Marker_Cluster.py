@@ -89,5 +89,5 @@ with col1:
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
 chart = alt.Chart(data2).mark_bar().encode(x='name',y='count')
-chart.show()
+st.altair_chart(chart)
 
