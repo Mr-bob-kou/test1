@@ -68,7 +68,7 @@ def heatmap(datum,mp,lat,lon,val):
 
 with st.expander("See All Heritage Data"):
     heritage=gpd.read_file(data)
-    st.dataframe(data=heritage)
+    st.dataframe(data=heritage, use_container_width=True)
 col1, col2 = st.columns([4, 1])
 with col2:
     basemap = st.selectbox("Select a basemap:", options, index)
@@ -80,7 +80,7 @@ with col1:
     if mode=='Choropleth Map(Heritage Count)':
         chromap(data2,m)
         charts = alt.Chart(Count).mark_bar(size=20).encode(x="name:N",y="count:Q")
-        st.altair_chart(charts)
+        st.altair_chart(charts,use_container_width=True)
     elif mode=='Heat Map':
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
     elif mode=='Default':
