@@ -88,6 +88,7 @@ with col1:
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
-chart = alt.Chart(data2).mark_bar().encode(x='name',y='count')
-st.altair_chart(chart)
+charts = alt.Chart(data2).mark_bar(cornerRadiusTopLeft=3,
+    cornerRadiusTopRight=3).encode(x='name',y='count')
+st.altair_chart(charts)
 
