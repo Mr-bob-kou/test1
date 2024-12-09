@@ -14,6 +14,16 @@ options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
 modes=["Default","Heat Map","Choropleth Map(Count by every Countries)"]
 modes1="Default"
+
+legend_dict = {
+    "0":'#FFFFFF',
+    "0-10":'#D2E9FF',
+    "10-20":#ACD6FF',
+    "20-30": '#46A3FF,
+    "30-40": "#0066CC",
+    "40- ": '#003060',
+}
+
 def style_function(feature):
     count = feature['properties']['count']
     
@@ -37,16 +47,16 @@ def style_function(feature):
         'fillOpacity': 1
     }
 def chromap(datum,mp):
-    m = leafmap.Map(center=[40, -100], zoom=4)
     mp.add_basemap(basemap)
-    mp.add_geojson(datum,style_callback=style_function)
+    mp.add_geojson(datum,style_callback=style_function) 
+    mp.add_legend(title="Heritage Counts", legend_dict=legend_dict,draggable=False,position="bottomright")
     return mp.to_streamlit(height=700)
+
+
 with st.expander("See All Heritage Data"):
     heritage=gpd.read_file(data)
     st.dataframe(data=heritage)
 col1, col2 = st.columns([4, 1])
-
-
 with col2:
     basemap = st.selectbox("Select a basemap:", options, index)
     mode=st.selectbox("Select a Mode",modes)
