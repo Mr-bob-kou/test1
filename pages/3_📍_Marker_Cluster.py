@@ -18,15 +18,15 @@ def style_function(feature):
     count = feature['properties']['count']
     
     if count > 40:
-        color = '#004B97'
+        color = '#003060'
     elif count > 30:
-        color = "#0080FF"
+        color = "#0066CC"
     elif count > 20:
-        color = '#66B3FF'
+        color = '#46A3FF'
     elif count > 10:
         color = '#ACD6FF'
     elif count > 0 :
-        color = '#D2E9FF'
+        color = '#ECF5FF'
     else:
         color='#FFFFFF'
     
