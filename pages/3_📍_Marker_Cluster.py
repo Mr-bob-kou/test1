@@ -1,6 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd
+import altair as alt
 
 st.set_page_config(layout="wide")
 
@@ -87,4 +88,6 @@ with col1:
         m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
+chart = alt.Chart(data2).mark_bar().encode(x='name',y='count')
+chart.show()
 
