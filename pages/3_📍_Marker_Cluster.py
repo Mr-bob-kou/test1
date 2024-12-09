@@ -76,6 +76,8 @@ with col2:
     mode=st.selectbox("Select a Mode",modes)
     if mode=='Choropleth Map(Heritage Count)':
         chbox=st.checkbox("3-D Presentation")
+        if chbox:
+            st.write("Coming Soon")
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
