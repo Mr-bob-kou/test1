@@ -6,5 +6,5 @@ import altair as alt
 st.set_page_config(layout="wide")
 
 
-st.title("General")
+st.title("Heritage Near Me")
 st.write("Coming Soon.......")
