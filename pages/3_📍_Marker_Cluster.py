@@ -118,6 +118,9 @@ with col1:
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
         col3,col4=st.columns([3,1])
+        with col4:
+            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
+            Chart_mode=st.selectbox("Select a Mode",chart_mode) 
         with col3:
             years=to_df(heritage,'DATEINSCRI')
             years.rename(columns={0:'count'},inplace=True)
@@ -130,9 +133,3 @@ with col1:
             if Chart_mode=='Hybrid Mode':
                 charts3 = alt.layer(chart1,chart2)
                 st.altair_chart(chart3,use_container_width=True)
-
-                
-        with col4:
-            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
-            Chart_mode=st.selectbox("Select a Mode",chart_mode) 
-
