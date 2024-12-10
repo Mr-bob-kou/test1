@@ -17,7 +17,7 @@ count10=Count.sort_values(by='count', ascending=False).head(10)
 
 options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
-modes=["Default","Heat Map","Choropleth Map(Heritage Count)"]
+modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
 
 legend_dict = {
