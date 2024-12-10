@@ -119,17 +119,14 @@ with col1:
         m.to_streamlit(height=700)
         col3,col4=st.columns([3,1])
         with col4:
-            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
+            chart_mode=['Line Chart','Bar Chart']
             Chart_mode=st.selectbox("Select a Mode",chart_mode) 
         with col3:
             years=to_df(heritage,'DATEINSCRI')
             years.rename(columns={0:'count'},inplace=True)
             charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
-            charts2 = alt.Chart(years).mark_bar(size=20).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
+            charts2 = alt.Chart(years).mark_bar(size=10).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
             if Chart_mode=='Line Chart':
                 st.altair_chart(charts1,use_container_width=True)
             if Chart_mode=='Bar Chart':
                 st.altair_chart(charts2,use_container_width=True)
-            if Chart_mode=='Hybrid Mode':
-                charts3 = (chart1 + chart2).properties(width=600)
-                st.altair_chart(chart3,use_container_width=True)
