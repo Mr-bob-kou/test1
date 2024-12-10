@@ -131,5 +131,5 @@ with col1:
             if Chart_mode=='Bar Chart':
                 st.altair_chart(charts2,use_container_width=True)
             if Chart_mode=='Hybrid Mode':
-                charts3 = alt.layer(chart1,chart2)
+                charts3 = (chart1 + chart2).properties(width=600)
                 st.altair_chart(chart3,use_container_width=True)
