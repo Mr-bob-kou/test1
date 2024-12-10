@@ -82,7 +82,7 @@ with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
         chromap(data2,m)
-        st.write("#### Heritage Count Statistics")
+        st.write("#### Heritage Count Statistics(Top 10)")
         col3,col4,col5=st.columns([2,1,1])
         with col3:
             charts = alt.Chart(count10).mark_bar(size=20).encode(x=alt.X("name",type="nominal").sort("y"),y=alt.Y("count",type="quantitative"))
