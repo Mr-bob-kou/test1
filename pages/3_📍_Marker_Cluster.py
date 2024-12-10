@@ -133,6 +133,6 @@ with col1:
 
                 
         with col4:
-            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
+            chart_modes=['Line Chart','Bar Chart','Hybrid Mode']
             Chart_mode=st.selectbox("Select a Mode",chart_modes) 
 
