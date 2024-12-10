@@ -71,11 +71,19 @@ def Default(datum,mp,lon,lat,pop):
     mp.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
     mp.add_basemap(basemap)
     return mp.to_streamlit(height=700)
+
 def to_df(datum,val):
     couda=datum.groupby(val).size()
     couda.to_frame()
     return couda.reset_index()
-    
+def cuml(datum,val):
+    datum['aggr']=0
+    for i in datum.index:
+        if i==0:
+            datum['aggr'][i]=datum[val][i]
+        else:
+            datum['aggr'][i]=datum[val][i]+datum['aggr'][i-1]
+    return datum
 
 
 with st.expander("See All Heritage Data"):
@@ -119,13 +127,16 @@ with col1:
         m.to_streamlit(height=700)
         col3,col4=st.columns([3,1])
         with col4:
-            chart_mode=['Line Chart','Bar Chart']
+            chart_mode=['Line Chart','Bar Chart','Cumulative Line Chart']
             Chart_mode=st.selectbox("Select a Mode",chart_mode) 
         with col3:
             years=to_df(heritage,'DATEINSCRI')
+            years['aggr']=0
             years.rename(columns={0:'count'},inplace=True)
+            cuml(years, 'count')
             charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
             charts2 = alt.Chart(years).mark_bar(size=10).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
+            charts3= alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("aggr",type="quantitative"))
             if Chart_mode=='Line Chart':
                 st.altair_chart(charts1,use_container_width=True)
             if Chart_mode=='Bar Chart':
