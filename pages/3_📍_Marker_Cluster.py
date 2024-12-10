@@ -117,7 +117,7 @@ with col1:
         m.add_points_from_xy(Insc,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
-        col3,col4,col5=st.columns([3,1])
+        col3,col4=st.columns([3,1])
         with col3:
             years=to_df(heritage,'DATEINSCRI')
             years.rename(columns={0:'count'},inplace=True)
