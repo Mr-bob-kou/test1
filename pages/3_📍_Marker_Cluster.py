@@ -83,8 +83,10 @@ with col1:
     if mode=='Choropleth Map(Heritage Count)':
         chromap(data2,m)
         st.write("#### Heritage Count Statistics")
-        charts = alt.Chart(count10).mark_bar(size=50).encode(x=alt.X("name",type="nominal").sort("y"),y=alt.Y("count",type="quantitative"))
-        st.altair_chart(charts,use_container_width=True)
+        col3,col4,col5=st.column([1,2,1])
+        with col4:
+            charts = alt.Chart(count10).mark_bar(size=20).encode(x=alt.X("name",type="nominal").sort("y"),y=alt.Y("count",type="quantitative"))
+            st.altair_chart(charts,use_container_width=True)
     elif mode=='Heat Map':
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
     elif mode=='Default':
