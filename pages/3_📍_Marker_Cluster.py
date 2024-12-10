@@ -84,7 +84,7 @@ with col1:
         chromap(data2,m)
         st.write("#### Heritage Count Statistics")
         col3,col4,col5=st.columns([1,2,1])
-        with col4:
+        with col3:
             charts = alt.Chart(count10).mark_bar(size=20).encode(x=alt.X("name",type="nominal").sort("y"),y=alt.Y("count",type="quantitative"))
             st.altair_chart(charts,use_container_width=True)
     elif mode=='Heat Map':
