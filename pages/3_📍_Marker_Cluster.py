@@ -141,3 +141,5 @@ with col1:
                 st.altair_chart(charts1,use_container_width=True)
             if Chart_mode=='Bar Chart':
                 st.altair_chart(charts2,use_container_width=True)
+            if Chart_mode=='Cumlative Line Chart':
+                st.altair_chart(charts3,use_container_width=True)
