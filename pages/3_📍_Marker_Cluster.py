@@ -65,12 +65,11 @@ def heatmap(datum,mp,lat,lon,val):
         name="Heat map",
         radius=20)
     return mp.to_streamlit(height=700)
-def Default(datum,lon,lat,pop):
-    m = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
-    m.add_geojson(regions, layer_name="Countries")
-    m.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
-    m.add_basemap(basemap)
-    return m.to_streamlit(height=700)
+def Default(datum,mp,lon,lat,pop):
+    mp.add_geojson(regions, layer_name="Countries")
+    mp.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
+    mp.add_basemap(basemap)
+    return mp.to_streamlit(height=700)
 
 
 with st.expander("See All Heritage Data"):
@@ -98,6 +97,7 @@ with col1:
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
         
     elif mode=='Default':
+        m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
-        default(heritage, "LONGITUDE","LATITUDE",pop)
+        Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
 
