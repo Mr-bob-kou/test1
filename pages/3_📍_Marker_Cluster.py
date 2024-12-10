@@ -117,9 +117,22 @@ with col1:
         m.add_points_from_xy(Insc,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
         m.to_streamlit(height=700)
-        col3,col4,col5=st.columns([2,1,1])
+        col3,col4,col5=st.columns([3,1])
         with col3:
             years=to_df(heritage,'DATEINSCRI')
-            charts = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("0",type="quantitative"))
-            st.altair_chart(charts,use_container_width=True)
+            years.rename(columns={0:'count'},inplace=True)
+            charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
+            charts2 = alt.Chart(years).mark_bar(size=20).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
+            if Chart_mode=='Line Chart':
+                st.altair_chart(charts,use_container_width=True)
+            if Chart_mode=='Bar Chart':
+                st.altair_chart(charts,use_container_width=True)
+            if Chart_mode=='Hybrid Mode':
+                charts3 = alt.layer(chart1,chart2)
+                st.altair_chart(chart3,use_container_width=True)
+
+                
+        with col4:
+            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
+            Chart_mode=st.selectbox("Select a Mode",chart_modes) 
 
