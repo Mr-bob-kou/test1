@@ -87,6 +87,7 @@ with col2:
         Dateint=heritage['DATEINSCRI'].min()
         Dateend=heritage['DATEINSCRI'].max()
         Inscdate=st.slider("Choose the Year",Dateint,Dateend)
+        st.write(Inscdate)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
