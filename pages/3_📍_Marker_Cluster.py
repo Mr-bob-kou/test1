@@ -106,7 +106,7 @@ with col1:
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
-        Insc=heritage['DATEINSCRI']=Inscdate
+        Insc=heritage[heritage['DATEINSCRI']==Inscdate]
         m.add_geojson(regions, layer_name="Countries")
         m.add_points_from_xy(Insc,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
         m.add_basemap(basemap)
