@@ -65,6 +65,12 @@ def heatmap(datum,mp,lat,lon,val):
         name="Heat map",
         radius=20)
     return mp.to_streamlit(height=700)
+def Default(datum,lon,lat,pop):
+    m = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+    m.add_geojson(regions, layer_name="Countries")
+    m.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
+    m.add_basemap(basemap)
+    return m.to_streamlit(height=700)
 
 
 with st.expander("See All Heritage Data"):
@@ -87,14 +93,11 @@ with col1:
         with col3:
             charts = alt.Chart(count10).mark_bar(size=20).encode(x=alt.X("name",type="nominal").sort("y"),y=alt.Y("count",type="quantitative"))
             st.altair_chart(charts,use_container_width=True)
+            
     elif mode=='Heat Map':
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
+        
     elif mode=='Default':
-        m = leafmap.Map(
-            center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True
-        )
-        m.add_geojson(regions, layer_name="Countries")
-        m.add_points_from_xy(heritage,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
-        m.add_basemap(basemap)
-        m.to_streamlit(height=700)
+        pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
+        default(heritage, "LONGITUDE","LATITUDE",pop)
 
