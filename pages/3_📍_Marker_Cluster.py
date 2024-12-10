@@ -8,6 +8,7 @@ st.set_page_config(layout="wide")
 
 st.title("General")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
+heritage=gpd.read_file(data)
 regions = "https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/world-administrative-boundaries.geojson"
 data2="https://github.com/Mr-bob-kou/My_Respository/raw/main/World%20Heritage%20Counts.geojson"
 Count=gpd.read_file(data2)
@@ -73,7 +74,6 @@ def Default(datum,mp,lon,lat,pop):
 
 
 with st.expander("See All Heritage Data"):
-    heritage=gpd.read_file(data)
     st.dataframe(data=heritage, use_container_width=True)
 col1, col2 = st.columns([4, 1])
 with col2:
@@ -84,7 +84,9 @@ with col2:
         if chbox:
             st.write("Coming Soon")
     if mode=="Inscribed Date":
-        Inscdate=st.slider("Date Time",1,10)
+        Dateint=heritage['DATEINSCRI'].min()
+        Dateend=heritage['DATEINSCRI'].max()
+        Inscdate=st.slider("Choose the Year",Dateint,Dateend)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
@@ -102,4 +104,11 @@ with col1:
         m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
+    elif mode=="Inscribed Date":
+        m=leafmap.Map(center=[40, -100], zoom=4))
+        Insc=heritage['DATEINSCRI']=Inscdate
+        m.add_geojson(regions, layer_name="Countries")
+        m.add_points_from_xy(Insc,x="LONGITUDE",y="LATITUDE", popup=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"])
+        m.add_basemap(basemap)
+        m.to_streamlit(height=700)
 
