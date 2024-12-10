@@ -84,7 +84,7 @@ with col2:
         if chbox:
             st.write("Coming Soon")
     if mode=="Inscribed Date":
-        Date=st.slider(1,10)
+        Inscdate=st.slider(1,10)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
