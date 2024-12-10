@@ -124,15 +124,15 @@ with col1:
             charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
             charts2 = alt.Chart(years).mark_bar(size=20).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
             if Chart_mode=='Line Chart':
-                st.altair_chart(charts,use_container_width=True)
+                st.altair_chart(charts1,use_container_width=True)
             if Chart_mode=='Bar Chart':
-                st.altair_chart(charts,use_container_width=True)
+                st.altair_chart(charts2,use_container_width=True)
             if Chart_mode=='Hybrid Mode':
                 charts3 = alt.layer(chart1,chart2)
                 st.altair_chart(chart3,use_container_width=True)
 
                 
         with col4:
-            chart_modes=['Line Chart','Bar Chart','Hybrid Mode']
-            Chart_mode=st.selectbox("Select a Mode",chart_modes) 
+            chart_mode=['Line Chart','Bar Chart','Hybrid Mode']
+            Chart_mode=st.selectbox("Select a Mode",chart_mode) 
 
