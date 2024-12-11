@@ -34,17 +34,19 @@ for index, row in data.iterrows():
     geojson_data['features'].append(feature)
 
 # 添加GeoJSON圖層到地圖
-tyro=m.add_geojson(geojson_data)
+m.add_geojson(geojson_data)
 
 # 在Streamlit中顯示地圖並捕獲用戶的點擊
 clicked_feature = m.to_streamlit(height=700)
-st.write(tyro)
 
 # 檢查 clicked_feature 是否存在且包含期望的屬性
-#if clicked_feature is not None and 'properties' in clicked_feature:
-    #st.subheader("點擊的要素屬性")
-    #st.write(f"名稱: {clicked_feature['properties'].get('name', '未提供名稱')}")
-    #st.write(f"座標: {clicked_feature['geometry'].get('coordinates', '未提供座標')}")
-    #st.write(f"介紹: {clicked_feature['properties'].get('description', '未提供介紹')}")
-#else:
-    #st.write("請點擊地圖上的一個點以查看其屬性資料。")
+def on_click(event):
+    # Access clicked feature properties
+    if event and event.properties:
+        st.subheader("Clicked Feature Properties")
+        st.write(f"Name: {event.properties.get('name', 'N/A')}")
+        st.write(f"Coordinates: {event.geometry.coordinates}")
+        st.write(f"Description: {event.properties.get('description', 'N/A')}")
+
+# Register the callback function for click events
+m.add_on_click(on_click)
