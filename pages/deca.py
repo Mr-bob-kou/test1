@@ -4,7 +4,7 @@ import pandas as pd
 import folium
 
 # 創建地圖
-m = leafmap.Map(center=[40.7128, -74.0060], zoom=12)
+m = folium.Map(location=[35.3, -97.6], zoom_start=4)
 
 # 創建一個範例GeoJSON數據，其中每個點包含座標、名稱和介紹
 data = pd.DataFrame({
