@@ -31,7 +31,7 @@ data['time'] = pd.to_datetime(data['time'])
 
 highlight_time_range = ['2024-01-02', '2024-01-04']
 
-chart = alt.Chart(data).mark_bar().encode(
+chart1 = alt.Chart(data).mark_bar().encode(
     x='time:T',  # T 表示時間類型
     y='value:Q',  # Q 表示數值型
     color=alt.condition(
@@ -40,3 +40,4 @@ chart = alt.Chart(data).mark_bar().encode(
         alt.value('steelblue')  # 默認顏色
     )
 )
+st.altair_chart(chart1,use_container_width=True)
