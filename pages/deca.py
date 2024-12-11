@@ -1,5 +1,6 @@
 import altair as alt
 import pandas as pd
+import streamlit as st
 
 # 創建範例數據
 data = pd.DataFrame({
