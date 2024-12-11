@@ -129,11 +129,15 @@ with col1:
         col3,col4=st.columns([3,1])
         with col4:
             chart_mode=['Line Chart','Bar Chart','Cumulative Line Chart']
-            Chart_mode=st.selectbox("Select a Mode",chart_mode) 
-        with col3:
+            Chart_mode=st.selectbox("Select a Mode",chart_mode)
             years=to_df(heritage,'DATEINSCRI')
             years['aggr']=0
             years.rename(columns={0:'count'},inplace=True)
+             pp=years[years['DATEINSCRI']==Inscdate]
+            d=pp['count'].to_list()[0]
+            st.write("Year:",Inscdate)
+            st.write("Total:",d)
+        with col3:
             cuml(years, 'count')
             cond=alt.condition(alt.datum.DATEINSCRI==Inscdate,alt.value('red'),alt.value('steelblue'))
             charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
@@ -145,3 +149,4 @@ with col1:
                 st.altair_chart(charts2,use_container_width=True)
             if Chart_mode=='Cumulative Line Chart':
                 st.altair_chart(charts3,use_container_width=True)
+
