@@ -18,4 +18,25 @@ chart = alt.Chart(data).mark_bar().encode(
         alt.value('steelblue') # 這是條件為假時的顏色
     )
 )
+
+
 st.altair_chart(chart,use_container_width=True)
+
+data = pd.DataFrame({
+    'time': ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05'],
+    'value': [10, 20, 30, 25, 15]
+})
+
+data['time'] = pd.to_datetime(data['time'])
+
+highlight_time_range = ['2024-01-02', '2024-01-04']
+
+chart = alt.Chart(data).mark_bar().encode(
+    x='time:T',  # T 表示時間類型
+    y='value:Q',  # Q 表示數值型
+    color=alt.condition(
+        alt.FieldOneOfPredicate(field='time', oneOf=highlight_time_range),  # 如果時間在特定範圍內
+        alt.value('red'),  # 高亮顯示的顏色
+        alt.value('steelblue')  # 默認顏色
+    )
+)
