@@ -1,7 +1,8 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
-import pandas as pd
 import folium
+import pandas as pd
+from streamlit_folium import st_folium
+from folium.features import GeoJsonPopup, GeoJsonTooltip
 
 # 創建地圖
 m = folium.Map(location=[35.3, -97.6], zoom_start=4)
@@ -34,13 +35,32 @@ for index, row in data.iterrows():
     }
     geojson_data['features'].append(feature)
 
+# 創建GeoJsonPopup和GeoJsonTooltip
+popup = GeoJsonPopup(
+    fields=["name", "description"],
+    aliases=["Name:", "Description:"],
+    localize=True,
+    labels=True,
+    style="background-color: yellow;"
+)
+
+tooltip = GeoJsonTooltip(
+    fields=["name"],
+    aliases=["Name:"],
+    localize=True,
+    sticky=False,
+    labels=True,
+    style="background-color: #F0EFEF; border: 2px solid black; border-radius: 3px; box-shadow: 3px;"
+)
+
+# 添加GeoJson到地圖
 folium.GeoJson(
     geojson_data,
-    tooltip=['name'],
-    popup=['name']
+    tooltip=tooltip,
+    popup=popup
 ).add_to(m)
 
-
+# 添加地圖到Streamlit
 return_on_hover = st.checkbox("Return on hover?", True)
 
 output = st_folium(m, width=700, height=500, return_on_hover=return_on_hover)
