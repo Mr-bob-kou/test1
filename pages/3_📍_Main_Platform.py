@@ -135,7 +135,7 @@ with col1:
             years['aggr']=0
             years.rename(columns={0:'count'},inplace=True)
             cuml(years, 'count')
-            cond=alt.condition(alt.datum.DATEINSCRI > 40,alt.value('red'),alt.value('steelblue'))
+            cond=alt.condition(alt.datum.DATEINSCRI==Inscdate,alt.value('red'),alt.value('steelblue'))
             charts1 = alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"))
             charts2 = alt.Chart(years).mark_bar(size=10).encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("count",type="quantitative"),color=cond)
             charts3= alt.Chart(years).mark_line().encode(x=alt.X("DATEINSCRI",type='temporal'),y=alt.Y("aggr",type="quantitative"))
