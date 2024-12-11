@@ -17,3 +17,4 @@ chart = alt.Chart(data).mark_bar().encode(
         alt.value('steelblue') # 這是條件為假時的顏色
     )
 )
+st.altair_chart(chart,use_container_width=True)
