@@ -36,7 +36,7 @@ for index, row in data.iterrows():
 
 folium.GeoJson(
     geojson_data,
-    tooltip=['name']
+    tooltip=['name'],
     popup=['name']
 ).add_to(m)
 
