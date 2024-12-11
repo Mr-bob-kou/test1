@@ -40,7 +40,6 @@ folium.GeoJson(
     popup=['name']
 ).add_to(m)
 
-colormap.add_to(m)
 
 return_on_hover = st.checkbox("Return on hover?", True)
 
