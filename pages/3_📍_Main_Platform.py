@@ -120,7 +120,7 @@ with col1:
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
         if m1:
-            st.write(m1['properties'])
+            st.write("True")
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
