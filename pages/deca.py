@@ -1,43 +1,48 @@
-import altair as alt
-import pandas as pd
 import streamlit as st
+import leafmap.foliumap as leafmap
+import pandas as pd
 
-# 創建範例數據
+# 創建地圖
+m = leafmap.Map(center=[40.7128, -74.0060], zoom=12)
+
+# 創建一個範例GeoJSON數據，其中每個點包含座標、名稱和介紹
 data = pd.DataFrame({
-    'category': ['A', 'B', 'C', 'D', 'E'],
-    'value': [10, 30, 50, 20, 60]
+    'name': ['Point A', 'Point B', 'Point C'],
+    'latitude': [40.7128, 40.730610, 40.748817],
+    'longitude': [-74.0060, -73.935242, -73.985428],
+    'description': ['Description of Point A', 'Description of Point B', 'Description of Point C']
 })
 
-# 使用條件語句來設置顏色
-chart = alt.Chart(data).mark_bar().encode(
-    x='category',
-    y='value',
-    color=alt.condition(
-        alt.datum.value > 40,  # 如果 value 大於 40，則應用紅色
-        alt.value('red'),      # 這是條件為真時的顏色
-        alt.value('steelblue') # 這是條件為假時的顏色
-    )
-)
+# 將數據轉換為GeoJSON格式
+geojson_data = {
+    "type": "FeatureCollection",
+    "features": []
+}
 
+for index, row in data.iterrows():
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [row['longitude'], row['latitude']]
+        },
+        "properties": {
+            "name": row['name'],
+            "description": row['description']
+        }
+    }
+    geojson_data['features'].append(feature)
 
-st.altair_chart(chart,use_container_width=True)
+# 添加GeoJSON圖層到地圖
+m.add_geojson(geojson_data)
 
-data = pd.DataFrame({
-    'time': ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05'],
-    'value': [10, 20, 30, 25, 15]
-})
+# 在Streamlit中顯示地圖並捕獲用戶的點擊
+clicked_feature = m.to_streamlit(height=700)
 
-data['time'] = pd.to_datetime(data['time'])
-
-highlight_time_range = ['2024-01-02', '2024-01-04']
-
-chart1 = alt.Chart(data).mark_bar().encode(
-    x='time:T',  # T 表示時間類型
-    y='value:Q',  # Q 表示數值型
-    color=alt.condition(
-        alt.FieldOneOfPredicate(field='time', oneOf=highlight_time_range),  # 如果時間在特定範圍內
-        alt.value('red'),  # 高亮顯示的顏色
-        alt.value('steelblue')  # 默認顏色
-    )
-)
+# 顯示點擊的屬性資料
+if clicked_feature:
+    st.subheader("點擊的要素屬性")
+    st.write(f"名稱: {clicked_feature['properties']['name']}")
+    st.write(f"座標: {clicked_feature['geometry']['coordinates']}")
+    st.write(f"介紹: {clicked_feature['properties']['description']}")
 st.altair_chart(chart1,use_container_width=True)
