@@ -133,7 +133,7 @@ with col1:
             years=to_df(heritage,'DATEINSCRI')
             years['aggr']=0
             years.rename(columns={0:'count'},inplace=True)
-             pp=years[years['DATEINSCRI']==Inscdate]
+            pp=years[years['DATEINSCRI']==Inscdate]
             d=pp['count'].to_list()[0]
             st.write("Year:",Inscdate)
             st.write("Total:",d)
