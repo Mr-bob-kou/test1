@@ -70,7 +70,7 @@ def Default(datum,mp,lon,lat,pop):
     mp.add_geojson(regions, layer_name="Countries")
     mp.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
     mp.add_basemap(basemap)
-    return mp.to_streamlit(height=700,return_on_hover=return_on_hover)
+    return mp.to_streamlit(height=700)
 
 def to_df(datum,val):
     couda=datum.groupby(val).size()
@@ -119,7 +119,7 @@ with col1:
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
-        st.write(m1["last_object_clicked_tooltip"])
+        st.write(m1)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
