@@ -4,4 +4,3 @@ leafmap
 owslib
 streamlit
 pydeck
-folium>=0.13,!=0.15.0
