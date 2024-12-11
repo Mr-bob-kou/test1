@@ -39,10 +39,11 @@ m.add_geojson(geojson_data)
 # 在Streamlit中顯示地圖並捕獲用戶的點擊
 clicked_feature = m.to_streamlit(height=700)
 
-# 顯示點擊的屬性資料
-if clicked_feature:
+# 檢查 clicked_feature 是否存在且包含期望的屬性
+if clicked_feature is not None and 'properties' in clicked_feature:
     st.subheader("點擊的要素屬性")
-    st.write(f"名稱: {clicked_feature['properties']['name']}")
-    st.write(f"座標: {clicked_feature['geometry']['coordinates']}")
-    st.write(f"介紹: {clicked_feature['properties']['description']}")
-st.altair_chart(chart1,use_container_width=True)
+    st.write(f"名稱: {clicked_feature['properties'].get('name', '未提供名稱')}")
+    st.write(f"座標: {clicked_feature['geometry'].get('coordinates', '未提供座標')}")
+    st.write(f"介紹: {clicked_feature['properties'].get('description', '未提供介紹')}")
+else:
+    st.write("請點擊地圖上的一個點以查看其屬性資料。")
