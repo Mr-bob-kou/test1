@@ -1,4 +1,4 @@
-!pip install streamlit-folium
+
 import io
 
 import branca
