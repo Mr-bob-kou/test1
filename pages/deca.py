@@ -34,11 +34,11 @@ for index, row in data.iterrows():
     geojson_data['features'].append(feature)
 
 # 添加GeoJSON圖層到地圖
-m.add_geojson(geojson_data)
+tyro=m.add_geojson(geojson_data)
 
 # 在Streamlit中顯示地圖並捕獲用戶的點擊
 clicked_feature = m.to_streamlit(height=700)
-st.write(clicked_feature)
+st.write(tyro)
 
 # 檢查 clicked_feature 是否存在且包含期望的屬性
 #if clicked_feature is not None and 'properties' in clicked_feature:
