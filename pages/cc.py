@@ -1,3 +1,4 @@
+!pip install streamlit-folium
 import io
 
 import branca
@@ -7,6 +8,7 @@ import pandas as pd
 import requests
 import streamlit as st
 from folium.features import GeoJsonPopup, GeoJsonTooltip
+from streamlit_folium import st_folium
 
 st.write("# GeoJson Popup")
 st.write(
