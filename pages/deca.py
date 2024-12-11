@@ -1,6 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
+import folium
 
 # 創建地圖
 m = leafmap.Map(center=[40.7128, -74.0060], zoom=12)
@@ -33,20 +34,22 @@ for index, row in data.iterrows():
     }
     geojson_data['features'].append(feature)
 
-# 添加GeoJSON圖層到地圖
-m.add_geojson(geojson_data)
+folium.GeoJson(
+    geojson_data,
+    tooltip=tooltip,
+    popup=popup,
+).add_to(m)
 
-# 在Streamlit中顯示地圖並捕獲用戶的點擊
-clicked_feature = m.to_streamlit(height=700)
+colormap.add_to(m)
 
-# 檢查 clicked_feature 是否存在且包含期望的屬性
-def on_click(event):
-    # Access clicked feature properties
-    if event and event.properties:
-        st.subheader("Clicked Feature Properties")
-        st.write(f"Name: {event.properties.get('name', 'N/A')}")
-        st.write(f"Coordinates: {event.geometry.coordinates}")
-        st.write(f"Description: {event.properties.get('description', 'N/A')}")
+return_on_hover = st.checkbox("Return on hover?", True)
 
-# Register the callback function for click events
-m.add_on_click(on_click)
+output = st_folium(m, width=700, height=500, return_on_hover=return_on_hover)
+
+left, right = st.columns(2)
+with left:
+    st.write("## Tooltip")
+    st.write(output["last_object_clicked_tooltip"])
+with right:
+    st.write("## Popup")
+    st.write(output["last_object_clicked_popup"])
