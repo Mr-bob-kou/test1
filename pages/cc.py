@@ -8,8 +8,6 @@ import requests
 import streamlit as st
 from folium.features import GeoJsonPopup, GeoJsonTooltip
 
-from streamlit_folium import st_folium
-
 st.write("# GeoJson Popup")
 st.write(
     "See [original](https://github.com/python-visualization/folium/blob/main/examples/GeoJsonPopupAndTooltip.ipynb)"
