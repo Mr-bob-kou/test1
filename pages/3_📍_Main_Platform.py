@@ -119,6 +119,9 @@ with col1:
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
+        last_click = st.last_click(m1)
+        if last_click:
+            st.write(f"Last click coordinates: {last_click['lat']}, {last_click['lon']}")
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
