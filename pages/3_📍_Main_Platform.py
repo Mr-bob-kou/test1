@@ -120,9 +120,9 @@ with col1:
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
         def on_click(**kwargs):
-        if kwargs.get('type') == 'click':
-            latlon = kwargs.get('coordinates')
-            return st.write(latlon)
+            if kwargs.get('type') == 'click':
+                latlon = kwargs.get('coordinates')
+                return st.write(latlon)
         m.on_interaction(on_click)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
