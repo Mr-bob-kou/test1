@@ -119,11 +119,9 @@ with col1:
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
-        def on_click(**kwargs):
-            if kwargs.get('type') == 'click':
-                latlon = kwargs.get('coordinates')
-                return st.write(latlon)
-        m1.on_interaction(on_click)
+        if m1.get('type') == 'click':
+            latlon = m1.get('coordinates')
+            st.write(latlon)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
