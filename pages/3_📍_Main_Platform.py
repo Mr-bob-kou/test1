@@ -119,10 +119,10 @@ with col1:
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         st.write("test")
-        def on_click(event):
-            lat = event["latlng"][0]  # 獲取緯度
-            lon = event["latlng"][1]  # 獲取經度
-            st.write(f"您點擊的地點：\n緯度：{lat}\n經度：{lon}")
+        def on_click(**kwargs):
+        if kwargs.get('type') == 'click':
+            latlon = kwargs.get('coordinates')
+            return st.write(latlon)
         m.on_interaction(on_click)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
