@@ -123,7 +123,7 @@ with col1:
             if kwargs.get('type') == 'click':
                 latlon = kwargs.get('coordinates')
                 return st.write(latlon)
-        m.on_interaction(on_click)
+        m1.on_interaction(on_click)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
