@@ -20,6 +20,7 @@ options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
 modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
+opt=list(heritage['name'])
 
 legend_dict = {
     "0":'#FFFFFF',
@@ -101,6 +102,8 @@ with col2:
         Dateend=heritage['DATEINSCRI'].max()
         Inscdate=st.slider("Choose the Year",Dateint,Dateend)
         st.write(Inscdate)
+    if mode=="Default":
+        place=st.selectbox("Choose a Place",opt)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
@@ -118,8 +121,6 @@ with col1:
         m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
-        st.write("test")
-        st.write(m1)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
