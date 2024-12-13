@@ -17,7 +17,7 @@ heritage2=gpd.read_file(data3)
 count10=Count.sort_values(by='count', ascending=False).head(10)
 
 options = list(leafmap.basemaps.keys())
-index = options.index("OpenTopoMap")
+index = options.index("FWS NWI Wetlands")
 modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
 opt=list(heritage['NAME'])
