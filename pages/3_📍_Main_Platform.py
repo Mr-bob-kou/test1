@@ -20,7 +20,7 @@ options = list(leafmap.basemaps.keys())
 index = options.index("OpenTopoMap")
 modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
-opt=list(heritage['name'])
+opt=list(heritage['NAME'])
 
 legend_dict = {
     "0":'#FFFFFF',
