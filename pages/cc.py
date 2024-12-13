@@ -95,7 +95,7 @@ tooltip = GeoJsonTooltip(
     """,
     max_width=800,
 )
-folium.Geojson(
+folium.GeoJson(
     heritage.to_json(),
     name="xxxx",
     tooltip=Folium.GeojsonTooltip(
