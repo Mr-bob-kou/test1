@@ -13,4 +13,4 @@ click_event = """
 m.get_root().html.add_child(folium.Element(f"<script>{click_event}</script>"))
 
 # 顯示地圖
-m
+m.to_streamlit(height=700)
