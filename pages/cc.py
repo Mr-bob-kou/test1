@@ -5,6 +5,7 @@ import branca
 import folium
 import geopandas
 import pandas as pd
+import geopandas as gpd
 import requests
 import streamlit as st
 from folium.features import GeoJsonPopup, GeoJsonTooltip
