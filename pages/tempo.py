@@ -1,12 +1,16 @@
-import leafmap
 import folium
+from folium import IFrame
 
-m = leafmap.Map(center=[51.505, -0.09], zoom=13)
+# 創建地圖
+m = folium.Map(location=[51.505, -0.09], zoom_start=13)
 
-def on_map_click(e):
-    print(f"Clicked at: {e.latlng}")
-
-m.on('click', on_map_click)
+# 添加點擊事件
+click_event = """
+    function(e) {
+        alert("You clicked the map at: " + e.latlng);
+    }
+"""
+m.get_root().html.add_child(folium.Element(f"<script>{click_event}</script>"))
 
 # 顯示地圖
 m
