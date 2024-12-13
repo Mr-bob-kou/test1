@@ -109,11 +109,12 @@ tooltip2 = GeoJsonTooltip(
     """,
     max_width=800,
 )
+
 folium.GeoJson(
     heritage.to_json(),
     name="xxxx",
     tooltip=tooltip2
-).add_to(map)
+).add_to(m)
 
 folium.GeoJson(
     df,
