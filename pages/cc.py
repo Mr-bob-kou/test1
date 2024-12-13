@@ -10,6 +10,10 @@ import streamlit as st
 from folium.features import GeoJsonPopup, GeoJsonTooltip
 from streamlit_folium import st_folium
 
+
+data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
+heritage=gpd.read_file(data)
+
 st.write("# GeoJson Popup")
 st.write(
     "See [original](https://github.com/python-visualization/folium/blob/main/examples/GeoJsonPopupAndTooltip.ipynb)"
@@ -90,6 +94,13 @@ tooltip = GeoJsonTooltip(
     """,
     max_width=800,
 )
+folium.Geojson(
+    heritage.to_json(),
+    name="xxxx",
+    tooltip=Folium.GeojsonTooltip(
+        field=[],aliases=[]
+    )
+).add_to(map)
 
 folium.GeoJson(
     df,
