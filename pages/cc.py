@@ -95,12 +95,24 @@ tooltip = GeoJsonTooltip(
     """,
     max_width=800,
 )
+tooltip2 = GeoJsonTooltip(
+    fields=["NAME", "COUNTRY", "DATEINSCRI"],
+    aliases=["name:", "country:", "Inscribed Time"],
+    localize=True,
+    sticky=False,
+    labels=True,
+    style="""
+        background-color: #F0EFEF;
+        border: 2px solid black;
+        border-radius: 3px;
+        box-shadow: 3px;
+    """,
+    max_width=800,
+)
 folium.GeoJson(
     heritage.to_json(),
     name="xxxx",
-    tooltip=Folium.GeojsonTooltip(
-        field=[],aliases=[]
-    )
+    tooltip=tooltip2
 ).add_to(map)
 
 folium.GeoJson(
