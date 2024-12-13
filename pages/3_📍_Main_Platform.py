@@ -121,7 +121,7 @@ with col1:
         st.write("test")
         def some_function(**kwargs):
             return print(kwargs.keys())
-        some_function(m1)
+        some_function(**m1)
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
