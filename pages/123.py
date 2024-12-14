@@ -26,7 +26,8 @@ def my_component(map_center: List, map_zoom: int = 13, key=None):
 
 if not _RELEASE:
     import streamlit as st
-
+    import leafmap.foliumap as leafmap
     st.subheader("Component with constant args")
-    coords = my_component(map_center=[51.505, -0.09], map_zoom=10, key=42)
+     m = leafmap.Map(center=[40, -100], zoom=4)
+    coords = m.my_component(map_center=[51.505, -0.09], map_zoom=10, key=42)
     st.write(coords)
