@@ -3,7 +3,7 @@ import leafmap.foliumap as leafmap
 import folium
 from folium import GeoJson
 import geopandas as gpd
-data="/content/drive/MyDrive/113-1_GIS_programing/data/worldheritagesites.shp"
+data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
 heritage=gpd.read_file(data)
 place="Minaret and Archaeological Remains of Jam"
 d=heritage[heritage['NAME']==place]
