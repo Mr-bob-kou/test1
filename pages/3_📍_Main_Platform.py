@@ -114,6 +114,7 @@ with col2:
         if place=="See All":
             Info("NA","NA","NA")
         else:
+            s=heritage[heritage['NAME']==place]
             h_name=s['NAME'].to_string(index=False)
             h_country=s['COUNTRY'].to_string(index=False)
             h_des=s['DESCRIPTIO'].to_string(index=False)
