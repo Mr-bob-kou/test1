@@ -71,7 +71,7 @@ def heatmap(datum,mp,lat,lon,val):
 def Default(datum,mp,lon,lat,pop):
     mp.add_geojson(regions, layer_name="Countries")
     mp.add_points_from_xy(datum,x=lon,y=lat, popup=pop)
-    mp.add_basemap(basemap)
+    #mp.add_basemap(basemap)
     return mp.to_streamlit(height=700)
 
 def to_df(datum,val):
