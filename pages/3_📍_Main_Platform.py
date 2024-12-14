@@ -138,6 +138,7 @@ with col1:
             pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
             Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         else:
+            s=heritage[heritage['NAME']==place]
             lat=s['LATITUDE'].to_string(index=False)
             long=s['LONGITUDE'].to_string(index=False)
             centers=[lat,long]
