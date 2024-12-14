@@ -114,11 +114,10 @@ with col2:
         if place=="See All":
             Info("NA","NA","NA")
         else:
-            st.write("INFO:")
-            st.write("Place Name:",s['NAME'].to_string(index=False))
-            st.write("Country:",s['COUNTRY'].to_string(index=False))
-            st.write("Description:",s['DESCRIPTIO'].to_string(index=False))
-            st.text(s['DESCRIPTIO'].to_string(index=False))
+            h_name=s['NAME'].to_string(index=False)
+            h_country=s['COUNTRY'].to_string(index=False)
+            h_des=s['DESCRIPTIO'].to_string(index=False)
+            Info(h_name,h_country,h_des)
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
@@ -133,9 +132,15 @@ with col1:
        heatmap(heritage2,m,"LATITUDE","LONGITUDE","AREAHA")
         
     elif mode=='Default':
-        m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
-        pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
-        Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
+        if place=='See All':
+            m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+            pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
+            Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
+        else:
+            center=[s['LATITUDE'],s['LONGTITUDE']]
+            m1 = leafmap.Map(center=center, zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+            pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
+            Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         
         
     elif mode=="Inscribed Date":
