@@ -19,8 +19,9 @@ else:
 
 
 def my_component(map_center: List, map_zoom: int = 13, key=None):
+    if key is not None:
+        key = str(key)
     return _component_func(map_center=map_center, map_zoom=map_zoom, key=key, default=0)
-
 
 
 if not _RELEASE:
