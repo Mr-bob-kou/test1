@@ -8,3 +8,5 @@ st.set_page_config(layout="wide")
 
 st.title("Adding!!")
 st.write("Coming Soon......")
+txt = st.text_area()
+st.write(txt)
