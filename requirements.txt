@@ -4,3 +4,7 @@ leafmap
 owslib
 streamlit
 pydeck
+geemap
+jupyter-server-proxy
+nbserverproxy
+owslib
