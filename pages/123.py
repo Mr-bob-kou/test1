@@ -1,30 +1,31 @@
-import streamlit as st
-import leafmap.foliumap as leafmap
+import os
+from typing import List
 
-markdown = """
-Web App URL: <https://geotemplate.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
-"""
+import streamlit.components.v1 as components
 
-st.sidebar.title("About")
-st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+_RELEASE = False
 
 
-st.title("Interactive Map")
+if not _RELEASE:
+    _component_func = components.declare_component(
+        "streamlit_leaflet",
+        url="http://localhost:3001",
+    )
+else:
 
-col1, col2 = st.columns([4, 1])
-options = list(leafmap.basemaps.keys())
-index = options.index("OpenTopoMap")
-
-with col2:
-
-    basemap = st.selectbox("Select a basemap:", options, index)
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
+    build_dir = os.path.join(parent_dir, "frontend/build")
+    _component_func = components.declare_component("streamlit_leaflet", path=build_dir)
 
 
-with col1:
+def my_component(map_center: List, map_zoom: int = 13, key=None):
+    return _component_func(map_center=map_center, map_zoom=map_zoom, key=key, default=0)
 
-    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
-    m.add_basemap(basemap)
-    m.to_streamlit(height=700)
+
+
+if not _RELEASE:
+    import streamlit as st
+
+    st.subheader("Component with constant args")
+    coords = my_component(map_center=[51.505, -0.09], map_zoom=10, key=42)
+    st.write(coords)
