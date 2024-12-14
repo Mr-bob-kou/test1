@@ -86,6 +86,11 @@ def cuml(datum,val):
         else:
             datum['aggr'][i]=datum[val][i]+datum['aggr'][i-1]
     return datum
+def Info(NAME,COUNTRY,DESC):
+    st.write("INFO:")
+    st.write("Heritage Name:",NAME)
+    st.write("Country:",COUNTRY)
+    st.write("Description:",DESC)
 
 
 with st.expander("See All Heritage Data"):
@@ -107,10 +112,7 @@ with col2:
         place=st.selectbox("Choose a Place",opt)
         s=heritage[heritage['NAME']==place]
         if place=="See All":
-            st.write("INFO:")
-            st.write("Heritage Name:",NA)
-            st.write("Country:",NA)
-            st.write("Description:",NA)
+            Info("NA","NA","NA")
         else:
             st.write("INFO:")
             st.write("Place Name:",s['NAME'].to_string(index=False))
