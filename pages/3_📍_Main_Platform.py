@@ -137,8 +137,8 @@ with col1:
             pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
             Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         else:
-            center=[s['LATITUDE'],s['LONGTITUDE']]
-            m1 = leafmap.Map(center=center, zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+            center=[s['LATITUDE'],s['LONGITUDE']]
+            m1 = leafmap.Map(center=center, zoom=17,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
             pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
             Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         
