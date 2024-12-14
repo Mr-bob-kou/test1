@@ -15,7 +15,7 @@ Count=gpd.read_file(data2)
 data3="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/refs/heads/main/point2.geojson"
 heritage2=gpd.read_file(data3)
 count10=Count.sort_values(by='count', ascending=False).head(10)
-heritage_sort=heritage.sort_value(by='NAME', ascending=True)
+heritage_sort=heritage.sort_values(by='NAME', ascending=True)
 
 options = list(leafmap.basemaps.keys())
 index = options.index("FWS NWI Wetlands")
