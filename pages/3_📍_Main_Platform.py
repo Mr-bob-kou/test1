@@ -107,7 +107,7 @@ with col2:
         place=st.selectbox("Choose a Place",opt)
         s=heritage[heritage['NAME']==place]
         st.write("INFO:")
-        st.write("Place Name:",s.loc[:,'NAME'])
+        st.write("Place Name:",s['NAME'].to_string())
         st.write("Country:",s['COUNTRY'])
         st.write("Description:",s['DESCRIPTIO'])
 with col1:
