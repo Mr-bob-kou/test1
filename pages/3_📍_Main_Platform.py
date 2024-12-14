@@ -105,6 +105,11 @@ with col2:
         st.write(Inscdate)
     if mode=="Default":
         place=st.selectbox("Choose a Place",opt)
+        s=heritage[heritage['NAME']==place]
+        st.write("INFO:")
+        st.write("Place Name:",s['NAME'])
+        st.write("Country:",s['COUNTRY'])
+        st.write("Description:",s['DESCRIPTIO'])
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
