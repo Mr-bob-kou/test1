@@ -140,7 +140,7 @@ with col1:
             lat=s['LATITUDE'].to_string(index=False)
             long=s['LONGITUDE'].to_string(index=False)
             centers=[lat,long]
-            m7 = leafmap.Map(center=centers, zoom=17,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+            m7 = leafmap.Map(center=centers,zoom=17,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
             pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
             Default(heritage,m7, "LONGITUDE","LATITUDE",pop)
         
