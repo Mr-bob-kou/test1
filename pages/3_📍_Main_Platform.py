@@ -118,6 +118,7 @@ with col2:
             st.write("Place Name:",s['NAME'].to_string(index=False))
             st.write("Country:",s['COUNTRY'].to_string(index=False))
             st.write("Description:",s['DESCRIPTIO'].to_string(index=False))
+            st.text(s['DESCRIPTIO'].to_string(index=False))
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
