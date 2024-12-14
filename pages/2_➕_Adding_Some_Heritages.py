@@ -11,7 +11,7 @@ st.write("Coming Soon......")
 with st.form("my_form"):
     st.write("Inside the form")
     name = st.text_input("Name")
-    Country= st.text_input("Country")
+    country= st.text_input("Country")
 
     submitted = st.form_submit_button("Submit")
 if submitted:
