@@ -106,10 +106,16 @@ with col2:
     if mode=="Default":
         place=st.selectbox("Choose a Place",opt)
         s=heritage[heritage['NAME']==place]
-        st.write("INFO:")
-        st.write("Place Name:",s['NAME'].to_string())
-        st.write("Country:",s['COUNTRY'].to_string())
-        st.write("Description:",s['DESCRIPTIO'].to_string())
+        if place=="See All":
+            st.write("INFO:")
+            st.write("Heritage Name:",NA)
+            st.write("Country:",NA)
+            st.write("Description:",NA)
+        else:
+            st.write("INFO:")
+            st.write("Place Name:",s['NAME'].to_string(index=False))
+            st.write("Country:",s['COUNTRY'].to_string(index=False))
+            st.write("Description:",s['DESCRIPTIO'].to_string(index=False))
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
@@ -127,6 +133,7 @@ with col1:
         m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
+        
         
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
