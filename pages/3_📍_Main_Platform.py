@@ -21,7 +21,7 @@ options = list(leafmap.basemaps.keys())
 index = options.index("FWS NWI Wetlands")
 modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
-opt=[list(heritage_sort['NAME']),"See All"]
+opt=list(heritage_sort['NAME'])+["See All"]
 
 legend_dict = {
     "0":'#FFFFFF',
