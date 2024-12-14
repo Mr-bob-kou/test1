@@ -21,7 +21,7 @@ options = list(leafmap.basemaps.keys())
 index = options.index("FWS NWI Wetlands")
 modes=["Default","Heat Map","Choropleth Map(Heritage Count)","Inscribed Date","Classification"]
 modes1="Default"
-opt=list(heritage_sort['NAME'])
+opt=[list(heritage_sort['NAME']),"See All"]
 
 legend_dict = {
     "0":'#FFFFFF',
@@ -108,8 +108,8 @@ with col2:
         s=heritage[heritage['NAME']==place]
         st.write("INFO:")
         st.write("Place Name:",s['NAME'].to_string())
-        st.write("Country:",s['COUNTRY'])
-        st.write("Description:",s['DESCRIPTIO'])
+        st.write("Country:",s['COUNTRY'].to_string())
+        st.write("Description:",s['DESCRIPTIO'].to_string())
 with col1:
     m = leafmap.Map(center=[40, -100], zoom=4)
     if mode=='Choropleth Map(Heritage Count)':
@@ -127,6 +127,7 @@ with col1:
         m1 = leafmap.Map(center=[40, -100], zoom=4,locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
         pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
         Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
+        
     elif mode=="Inscribed Date":
         m=leafmap.Map(center=[40, -100], zoom=4)
         Insc=heritage[heritage['DATEINSCRI']==Inscdate]
