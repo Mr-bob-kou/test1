@@ -4,7 +4,7 @@ import geopandas as gpd
 import altair as alt
 
 st.set_page_config(layout="wide")
-
+st.legacy_caching.clear_cache()
 
 st.title("Main")
 data="https://raw.githubusercontent.com/Mr-bob-kou/My_Respository/main/point.geojson"
@@ -138,7 +138,6 @@ with col1:
             pop=["NAME","DATEINSCRI","COUNTRY","DESCRIPTIO","AREAHA","DANGER","LONGITUDE","LATITUDE"]
             Default(heritage,m1, "LONGITUDE","LATITUDE",pop)
         else:
-            s=heritage[heritage['NAME']==place]
             lat=s['LATITUDE'].to_string(index=False)
             long=s['LONGITUDE'].to_string(index=False)
             centers=[lat,long]
