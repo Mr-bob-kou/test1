@@ -1,33 +1,20 @@
-import os
-from typing import List
+import streamlit as st
+import leafmap.foliumap as leafmap
+import folium
+from folium import GeoJson
+import geopandas as gpd
+m = leafmap.Map(center=[51.505, -0.09], zoom=13)
 
-import streamlit.components.v1 as components
+# 添加一個標記
+marker = m.add_marker([51.505, -0.09], popup="Hello, world!")
 
-_RELEASE = False
+# 定義回調函數，當用戶點擊標記時執行
+def on_marker_click(event):
+    popup_content = event['popup']  # 獲取點擊的標記內容
+    print(f"Marker clicked! Popup content: {popup_content}")
 
+# 註冊回調函數以處理標記點擊事件
+m.on_interaction(on_marker_click)
 
-if not _RELEASE:
-    _component_func = components.declare_component(
-        "streamlit_leaflet",
-        url="http://localhost:3001",
-    )
-else:
-
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("streamlit_leaflet", path=build_dir)
-
-
-def my_component(map_center: List, map_zoom: int = 13, key=None):
-    if key is not None:
-        key = str(key)
-    return _component_func(map_center=map_center, map_zoom=map_zoom, key=key, default=0)
-
-
-if not _RELEASE:
-    import streamlit as st
-    import leafmap.foliumap as leafmap
-    st.subheader("Component with constant args")
-    m = leafmap.Map(center=[40, -100], zoom=4)
-    coords = m.my_component(map_center=[51.505, -0.09], map_zoom=10, key=42)
-    st.write(coords)
+# 顯示地圖
+m.to_streamlit(width=700)
