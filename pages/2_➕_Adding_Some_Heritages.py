@@ -20,13 +20,18 @@ with st.form("my_form"):
         x_cord=st.text_input("Longitude") 
         y_cord=st.text_input("Latitude")
         type=st.selectbox("Type",tp)
-        danger=st.radio("Is this Heritage in Danger?",["Yes","No"])
-        if danger =="Yes":
+        danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
+        if danger == "Yes":
             st.write("Coco")
-            #dang_year=st.selectbox("Years",yr_range)
-            #areaha=st.text_input("Area(ha)")
         else:
             st.write("lol")
+
+        #if danger =="Yes":
+            #st.write("Coco")
+            #dang_year=st.selectbox("Years",yr_range)
+            #areaha=st.text_input("Area(ha)")
+        #else:
+            #st.write("lol")
             #areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
