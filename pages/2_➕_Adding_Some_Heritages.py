@@ -11,7 +11,7 @@ yr_range=list(range(1900,2100))
 tp=["Natural","Cultural","Mixed"] 
 if 'radio_choice' not in st.session_state:
     st.session_state.radio_choice = 'Yes'
-danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
+
 if danger != st.session_state.radio_choice:
     st.session_state.radio_choice = danger
 with st.form("my_form"):
@@ -27,6 +27,7 @@ with st.form("my_form"):
         type=st.selectbox("Type",tp)
         if st.session_state.radio_choice=="Yes":
             years=st.selectbox("Danger Year",yr_range)
+            danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
             areaha=st.text_input("Area(ha)")
         else:
             areaha=st.text_input("Area(ha)")
