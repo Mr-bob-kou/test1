@@ -21,12 +21,6 @@ with st.form("my_form"):
         y_cord=st.text_input("Latitude")
         type=st.selectbox("Type",tp) 
         danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
-        if st.session_state.radio_choice=="Yes":
-            years=st.selectbox("Danger Year",yr_range)
-           
-            areaha=st.text_input("Area(ha)")
-        else:
-            areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
         m.to_streamlit(width=500, height=500)
