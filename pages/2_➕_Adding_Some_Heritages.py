@@ -23,7 +23,7 @@ with st.form("my_form"):
         danger=st.radio("Is this Heritage in Danger?",["Yes","No"])
         if danger=="Yes":
             dang_year=st.selectbox("Years",yr_range)
-        areaha=st.text.input("Area(ha)")
+        areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
         m.to_streamlit(width=500, height=500)
