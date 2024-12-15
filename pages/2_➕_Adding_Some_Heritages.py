@@ -20,7 +20,7 @@ with st.form("my_form"):
         y_cord=st.text_input("Latitude")
     with co2:
         m=leafmap.Map()
-        m.to_streamlit(width=200, height=200)
+        m.to_streamlit(width=500, height=500)
     
     submitted = st.form_submit_button("Submit")
 if submitted:
