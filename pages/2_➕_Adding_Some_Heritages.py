@@ -15,7 +15,7 @@ with st.form("my_form"):
     country= st.text_input("Country")
     year=st.selectbox("Inscribed Year",yr_range)
     description=st.text_area("Description","NA")
-    co1,co2=st.columns([1,3])
+    co1,co2=st.columns([1,1])
     with co1:
         x_cord=st.text_input("Longitude") 
         y_cord=st.text_input("Latitude")
