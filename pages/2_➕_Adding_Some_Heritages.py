@@ -15,7 +15,14 @@ with st.form("my_form"):
     country= st.text_input("Country")
     year=st.selectbox("Inscribed Year",yr_range)
     description=st.text_area("Description","NA")
-
+    co1,co2=st.columns([1,1])
+    with co1:
+        x_cord=st.text_input("Longitude")
+    with co2:
+        y_cord=st.text_input("Latitude")
+    m=leafmap.Map()
+    m.to_strealit(width=200)
+    
     submitted = st.form_submit_button("Submit")
 if submitted:
     st.write("Name", name, "Country", country)
