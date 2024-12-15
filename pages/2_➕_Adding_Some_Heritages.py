@@ -7,7 +7,6 @@ st.set_page_config(layout="wide")
 
 
 st.title("Adding!!")
-st.write("Coming Soon......")
 yr_range=list(range(1900,2100))
 with st.form("my_form"):
     st.write("Inside the form")
@@ -28,3 +27,4 @@ if submitted:
     st.write("Name", name, "Country", country)
     st.write("Year",year)
     st.write("description",description)
+    st.write(x_cord)
