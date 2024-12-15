@@ -14,3 +14,11 @@ if genre == ":rainbow[Comedy]":
     st.write("You selected comedy.")
 else:
     st.write("You didn't select comedy.")
+
+danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
+
+# 根據用戶的選擇顯示不同的文字
+if danger == "Yes":
+    st.write("Coco")
+else:
+    st.write("lol")
