@@ -8,7 +8,10 @@ st.set_page_config(layout="wide")
 
 st.title("Adding!!")
 yr_range=list(range(1900,2100))
-tp=["Natural","Cultural","Mixed"]
+tp=["Natural","Cultural","Mixed"]  
+danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
+if danger != st.session_state.radio_choice:
+    st.session_state.radio_choice = danger
 with st.form("my_form"):
     st.write("Inside the form")
     name = st.text_input("Name")
@@ -20,8 +23,11 @@ with st.form("my_form"):
         x_cord=st.text_input("Longitude") 
         y_cord=st.text_input("Latitude")
         type=st.selectbox("Type",tp)
-        danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
-        areaha=st.text_input("Area(ha)")
+        if st.session_state.radio_choice=="Yes":
+            years=st.selectbox("Danger Year",yr_range)
+            areaha=st.text_input("Area(ha)")
+        else:
+            areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
         m.to_streamlit(width=500, height=500)
