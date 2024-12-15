@@ -21,8 +21,6 @@ with st.form("my_form"):
         y_cord=st.text_input("Latitude")
         type=st.selectbox("Type",tp)
         danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
-        if danger=="No":
-            st.rerun()
         areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
