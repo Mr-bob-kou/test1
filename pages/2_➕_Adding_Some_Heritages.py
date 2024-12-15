@@ -24,10 +24,11 @@ with st.form("my_form"):
     with co1:
         x_cord=st.text_input("Longitude") 
         y_cord=st.text_input("Latitude")
-        type=st.selectbox("Type",tp)
+        type=st.selectbox("Type",tp) 
+        danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
         if st.session_state.radio_choice=="Yes":
             years=st.selectbox("Danger Year",yr_range)
-            danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
+           
             areaha=st.text_input("Area(ha)")
         else:
             areaha=st.text_input("Area(ha)")
