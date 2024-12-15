@@ -8,7 +8,9 @@ st.set_page_config(layout="wide")
 
 st.title("Adding!!")
 yr_range=list(range(1900,2100))
-tp=["Natural","Cultural","Mixed"]  
+tp=["Natural","Cultural","Mixed"] 
+if 'radio_choice' not in st.session_state:
+    st.session_state.radio_choice = 'Yes'
 danger = st.radio("Is this Heritage in Danger?", ["Yes", "No"])
 if danger != st.session_state.radio_choice:
     st.session_state.radio_choice = danger
