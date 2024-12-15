@@ -9,11 +9,6 @@ st.set_page_config(layout="wide")
 st.title("Adding!!")
 yr_range=list(range(1900,2100))
 tp=["Natural","Cultural","Mixed"] 
-if 'radio_choice' not in st.session_state:
-    st.session_state.radio_choice = 'Yes'
-
-if danger != st.session_state.radio_choice:
-    st.session_state.radio_choice = danger
 with st.form("my_form"):
     st.write("Inside the form")
     name = st.text_input("Name")
