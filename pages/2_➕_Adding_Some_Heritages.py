@@ -21,13 +21,13 @@ with st.form("my_form"):
         y_cord=st.text_input("Latitude")
         type=st.selectbox("Type",tp)
         danger=st.radio("Is this Heritage in Danger?",["Yes","No"])
-        if danger=="Yes":
+        if danger =="Yes":
             st.write("Coco")
-            dang_year=st.selectbox("Years",yr_range)
-            areaha=st.text_input("Area(ha)")
+            #dang_year=st.selectbox("Years",yr_range)
+            #areaha=st.text_input("Area(ha)")
         else:
             st.write("lol")
-            areaha=st.text_input("Area(ha)")
+            #areaha=st.text_input("Area(ha)")
     with co2:
         m=leafmap.Map()
         m.to_streamlit(width=500, height=500)
