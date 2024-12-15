@@ -24,7 +24,7 @@ else:
     st.write("lol")
 
 
-danger2=st.radio("Is this Heritage in Danger?",["Yes","No"])
+danger2=st.radio("Is this Heritage in Danger?",["Yes","No"],key="danger2")
 if danger2 =="Yes":
     st.write("Coco")
 else:
